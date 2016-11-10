@@ -71,9 +71,9 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 	 * @param int $port
 	 * @return resource|false
 	 */
-	public static function ldap_connect( $hostname=null, $port=389 ) {
+	public static function ldap_connect( $hostname=null ) {
 		wfSuppressWarnings();
-		$ret = ldap_connect( $hostname, $port );
+		$ret = ldap_connect( $hostname );
 		wfRestoreWarnings();
 		return $ret;
 	}
@@ -1162,7 +1162,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 		# We must set a user option if we want token based logins to work
 		if ( $user->getToken( false ) ) {
 			$this->printDebug( "User has a token, setting domain in user options.", NONSENSITIVE );
-			self::saveDomain( $user, $_SESSION['wsDomain'] );
+			self::saveDomain( $user, $this->getDomain() );
 		}
 
 		# Let other extensions update the user

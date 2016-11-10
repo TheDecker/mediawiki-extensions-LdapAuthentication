@@ -147,7 +147,7 @@ function AutoAuthSetup() {
 		 *  LdapAutoAuthentication::Authenticate() (stop before the $localId
 		 *  bit).
 		 */
-		throw new BadFunctionCallException( 'AutoAuthSetup() is not supported with AuthManager.' );
+		//throw new BadFunctionCallException( 'AutoAuthSetup() is not supported with AuthManager.' );
 	}
 
 	$wgAuth = LdapAuthenticationPlugin::getInstance();
